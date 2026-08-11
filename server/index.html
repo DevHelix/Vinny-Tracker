@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+    <meta name="description" content="A simple HTML5 boilerplate template.">
+    <meta name="author" content="Your Name">
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="My Project">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="A simple HTML5 boilerplate template.">
+    <meta property="og:image" content="image.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <div id="reports">
+            <p id="task">Vincent's Tasks — Updates every 5 seconds</p>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        const ws = new WebSocket('wss://omission-scrap-crushing.ngrok-free.dev')
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data)
+            console.log(data.window, data.date, data.time)
+            
+            const newDiv = document.createElement('div')
+            newDiv.textContent = `${data.window} - ${data.date} - ${data.time}`
+            document.getElementById('reports').appendChild(newDiv)
+        }
+
+    </script>
+</body>
+
+</html>
