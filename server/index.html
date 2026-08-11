@@ -28,7 +28,7 @@
     </footer>
     <!-- JavaScript -->
     <script>
-        const ws = new WebSocket('wss://omission-scrap-crushing.ngrok-free.dev')
+        const ws = new WebSocket('https://omission-scrap-crushing.ngrok-free.dev')
 
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data)
