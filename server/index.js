@@ -21,6 +21,7 @@ server.listen(port, () => {
     console.log(`Ws server running on ${port}`)
 })
 
+
 wsServer.on('connection', (ws) => {
     console.log('Browser connected')
 })

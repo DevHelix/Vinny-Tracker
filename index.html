@@ -23,9 +23,23 @@
         <div id="container">
             <p id="title">Vincent's Tasks — Updates every second</p>
             <p id="status">SERVER STATUS: OFFLINE</p>
-            <div id="reports">   
-                <p id="task-label">Current Task: </p>
-                <p id="curr-task">None</p>
+            <div id="reports"> 
+                <div id="task-container">
+                    <p id="task-label">Current Task: </p>
+                    <p id="curr-task">None</p>
+                </div>
+                <div id="information-container">
+                    <div id="duration-container">
+                        <p id="duration-label">Duration</p>
+                        <p id="duration">----</p>
+                    </div>
+                    <div >
+
+                    </div>
+                </div>
+            </div>
+            <div id="">
+
             </div>
         </div>
     </main>
@@ -34,8 +48,9 @@
     <!-- JavaScript -->
     <script>
         const ws = new WebSocket('https://omission-scrap-crushing.ngrok-free.dev')
-        const task = document.getElementById('task')
+        const task = document.getElementById('curr-task')
         const status = document.getElementById('status')
+        const duration = document.getElementById('duration')
 
         ws.onopen = () => {
             status.textContent = "SERVER STATUS: ONLINE"
@@ -54,7 +69,7 @@
             console.log(data.window, data.date, data.time)
             
             task.textContent = `${data.window} - ${data.date} - ${data.time}`
-
+            duration.textContent = `${data.duration}`
         }
 
     </script>
