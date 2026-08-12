@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Project</title>
-    <meta name="description" content="A simple HTML5 boilerplate template.">
-    <meta name="author" content="Your Name">
+    <title>Vinny Tracker</title>
+    <meta name="description" content="Vinny Tracker">
+    <meta name="author" content="Vincent">
     <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="My Project">
+    <meta property="og:title" content="Vinny Tracker">
     <meta property="og:type" content="website">
     <meta property="og:description" content="A simple HTML5 boilerplate template.">
     <meta property="og:image" content="image.png">
@@ -20,10 +20,13 @@
     <header>
     </header>
     <main>
-        <div id="reports">
+        <div id="container">
             <p id="title">Vincent's Tasks — Updates every second</p>
-            <p id="status">SERVER STATUS: OFFLINE</div>
-            <p id="task">Current Task: None</p>
+            <p id="status">SERVER STATUS: OFFLINE</p>
+            <div id="reports">   
+                <p id="task-label">Current Task: </p>
+                <p id="curr-task">None</p>
+            </div>
         </div>
     </main>
     <footer>
@@ -48,12 +51,10 @@
 
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data)
-            let t = ""
             console.log(data.window, data.date, data.time)
             
             task.textContent = `${data.window} - ${data.date} - ${data.time}`
 
-            // document.getElementById('reports').appendChild(newDiv)
         }
 
     </script>

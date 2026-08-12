@@ -1,0 +1,19 @@
+
+
+html, body, main {
+    width: 100%;
+}
+
+#container {
+    margin: 10px;
+    text-align: center;
+}
+
+#reports {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 3px solid green;
+    width: 100%;
+}
