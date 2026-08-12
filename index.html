@@ -21,8 +21,9 @@
     </header>
     <main>
         <div id="reports">
-            <p id="title">Vincent's Tasks — Updates every 5 seconds</p>
-            <p id="task">STATUS: OFFLINE</div>
+            <p id="title">Vincent's Tasks — Updates every second</p>
+            <p id="status">SERVER STATUS: OFFLINE</div>
+            <p id="task">Current Task: None</p>
         </div>
     </main>
     <footer>
@@ -31,6 +32,19 @@
     <script>
         const ws = new WebSocket('https://omission-scrap-crushing.ngrok-free.dev')
         const task = document.getElementById('task')
+        const status = document.getElementById('status')
+
+        ws.onopen = () => {
+            status.textContent = "SERVER STATUS: ONLINE"
+        }
+
+        ws.onclose = () => {
+            status.textContent = "SERVER STATUS: OFFLINE"
+        }
+
+        ws.onerror = () => {
+            status.textContent = "SERVER STATUS: ERROR"
+        }
 
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data)
